@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi Tool</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='frontend/css/registercss.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    
+     
+    <div id="content">
+        
+        <div class="center-container">
+
+            <form action="/ method="post">
+
+                <a href="/tageditor" class="tag-editor-button">
+                    <button type="button">Tag Editor</button>
+                </a>
+                <a href="/ytdown" class="tag-editor-button">
+                    <button type="button">YT Downloader</button>
+                </a>
+                <a href="/download_zip" class="tag-editor-button">
+                    <button type="button">Download ZIP</button>
+                </a>
+            </form>
+
+        </div>
+   
+    </div>
+
+   
+
+    <script src="{{ url_for('static', filename='node_modules/jsmediatags/dist/jsmediatags.min.js') }}"></script>
+    <script>
+
+        document.getElementById('delete-button').addEventListener('click', function () {
+            // Replace 'audio.mp3' with the actual file path you want to delete
+            var fileToDelete = 'audio.mp3';
+            fetch('/delete_file', {
+                method: 'POST',
+                body: new URLSearchParams({ 'file_path': fileToDelete }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);  // Display a message to the user
+            });
+        });
+    </script>
+    
+    
+
+    <script>
+        
+        function downloadVideo() {
+            var videoUrl = document.getElementById('video_url').value;
+            var format = document.getElementById('format').value;
+        
+            fetch('/download', {
+                method: 'POST',
+                body: new URLSearchParams({ 'video_url': videoUrl, 'format': format }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                var a = document.createElement('a');
+                a.href = data.download_url;
+                a.download = data.filename;
+                a.click();
+            });
+        }
+
+
+        </script>
+        
+        
+        
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</body>
+</html>
+
+

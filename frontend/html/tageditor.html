@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag Editor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='frontend/css/registercss.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    
+     
+    <div id="content">
+        
+        <div class="center-container">
+        
+            <form action="/edit_tags" method="post" enctype="multipart/form-data">
+                <h2>Tag Editor</h2>
+                <label for="audio_file">Select an audio file:</label>
+                <input type="file" name="audio_file" accept=".mp3" required>
+                <br>
+                <label for="title">Title:</label>
+                <input type="text" name="title">
+                <br>
+                <label for="artist">Artist:</label>
+                <input type="text" name="artist">
+                <br>
+                <label for="album">Album:</label>
+                <input type text" name="album">
+                <br>
+                <label for="year">Year:</label>
+                <input type="text" name="year">
+                <br>
+                <label for="album_cover">Album Cover (JPEG or PNG):</label>
+                <input type="file" name="album_cover" accept="image/jpeg, image/png">
+                
+                <br>
+                <button type="submit">Start Edit</button>
+            <button id="delete-button">Delete Old Files</button>
+        </form>
+            <!-- Add a button to trigger manual file deletion -->
+        
+            <a href="/" class="tag-editor-button">
+                <button type="button">Go Back</button>
+            </a>
+            <p></a></p>
+            {% if success_message %}
+            <div class="box" id="successbox">
+                <box-icon name='check' animation='tada' size="md" color="white"></box-icon>
+                <a href="{{ url_for('static', filename='backend/audio.mp3') }}" download="{{ url_for('static', filename='backend/audio.mp3') }}" class="download-link">Click here to download</a>
+            </div>
+            {% endif %}
+            
+            {% if error_message %}
+            <div class="box" id="errorbox">
+                <!--  <p class="error-message">{{ error_message }}</p>--> 
+                <box-icon id="erroricon" type='solid' name='error-alt' animation='tada' size="md" color="white"></box-icon>
+                  <p class="error-message">{{error_message}}</p>
+               </div>
+               {% endif %}
+        </div>
+   
+    </div>
+
+   
+
+    <script src="{{ url_for('static', filename='node_modules/jsmediatags/dist/jsmediatags.min.js') }}"></script>
+    <script>
+        document.getElementById('delete-button').addEventListener('click', function () {
+            // Replace 'audio.mp3' with the actual file path you want to delete
+            var fileToDelete = 'audio.mp3';
+            fetch('/delete_file', {
+                method: 'POST',
+                body: new URLSearchParams({ 'file_path': fileToDelete }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);  // Display a message to the user
+            });
+        });
+    </script>
+    
+
+        
+        
+        
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</body>
+</html>
+
+

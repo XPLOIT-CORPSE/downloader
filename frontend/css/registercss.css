@@ -1,0 +1,256 @@
+@font-face {
+    font-family: "Zona Pro Bold";
+    src: url("/static/frontend/fonts/ZonaPro-Bold.otf");
+    font-weight: bold;
+    font-style: normal;
+    }
+    
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Zona Pro Bold';
+    scroll-behavior: smooth;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #ffffff;
+    --text-color: #b8b8b8;
+    --bg-color: #202020;
+    --big-font: 5rem;
+    --h2-font: 2rem;
+    --p-font: 0.9rem;
+}
+
+*::selection {
+    background: var(--main-color);
+    color: #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #67b1e2, #215a80, #eb1b04);
+    background-size: 400% 400%;
+    animation: gradient 15s linear infinite;
+    height: 100vh;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+
+.center-container {
+    text-align: center;
+}
+
+form {
+    display: block;
+    text-align: left;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    color: #000000;
+    font-size: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #555;
+}
+
+input {
+    width: 353px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+select {
+    width: 353px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #0363c9;
+    margin-top: 10px;
+    color: #fff;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button {
+    width: 100%;
+    height: 10px;
+    background-color: #419dff;
+    margin-top: 10px;
+    color: #fff;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.center-container form p {
+    text-align: center;
+    margin-top: 20px;
+    color: #585858;
+    font-size: 17px;
+}
+
+
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 11px;
+}
+
+#errorbox {
+    display: inline-flex;
+    text-align: left;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ff0000;
+}
+
+#errorbox p {
+    text-align: center;
+    color: #faf9f9;
+    margin-top: 9px;
+    margin-left: 20px;
+}
+
+#successbox {
+    display: inline-flex;
+    text-align: left;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #5eff00;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #00ff22;
+}
+
+#successbox p {
+    text-align: center;
+    color: #faf9f9;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+/* Default styles for all screen sizes */
+/* ... (previous styles) ... */
+
+
+
+@media (max-width: 800px) {
+
+    /* Add responsive styles for mobile phones here */
+    body {
+        font-size: 14px; /* Example: Decrease font size for better mobile readability */
+    }
+    form {
+        width: 100%;
+    height: 100%;
+    padding: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    /* Add more responsive styles here */
+}
+
+@media (max-width: 480px) {
+    /* Add responsive styles for mobile phones here */
+    body {
+        font-size: 14px; /* Example: Decrease font size for better mobile readability */
+    }
+    /* Add other mobile-specific styles as needed */    
+    form {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+       
+}
+
